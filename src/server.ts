@@ -1,4 +1,4 @@
-import App from './app';
+import App from './App';
 
 import * as bodyParser from 'body-parser';
 import loggerMiddleware from './middleware/logger';
@@ -10,7 +10,6 @@ const app = new App({
   port: 3000,
   controllers: [
     new HomeController(),
-    // new PostsController(),
   ],
   middleWares: [
     bodyParser.json(),
@@ -18,5 +17,6 @@ const app = new App({
     loggerMiddleware
   ]
 });
+
 
 app.listen();

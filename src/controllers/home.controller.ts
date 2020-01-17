@@ -3,7 +3,7 @@ import { Request, Response} from 'express';
 import IControllerBase from '../interfaces/IControllerBase.interface';
 
 class HomeController implements IControllerBase {
-  public path = '/';
+  public path = '/user';
   public router = express.Router();
 
   constructor() {
@@ -11,26 +11,17 @@ class HomeController implements IControllerBase {
   }
 
   public initRoutes() {
-    this.router.get('/', this.index);
+    this.router.get('/user', this.index);
   }
 
   index = (req: Request, res: Response) => {
-    const users = [
-      {
-        id: 1, 
-        name: 'Ali'
-      },
-      {
-        id: 2, 
-        name: 'Can'
-      },
-      {
-        id: 3, 
-        name: 'Ahmet'
-      }
-    ]
+    let data :any = {
+      hello: 'Hello World!'
+    };
 
-    res.render('home/index', { users });
+    data.name = 'Hyeon';
+
+    res.render('index', { data } );
   }
 }
 

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var loggerMiddleware = function (req, res, next) {
+const loggerMiddleware = (req, res, next) => {
     console.log('Request logged: ', req.method, req.path);
     next();
 };

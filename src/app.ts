@@ -1,5 +1,6 @@
-import * as express from 'express';
+import express from 'express';
 import { Application } from 'express';
+import path from 'path';
 
 class App {
   public app: Application;
@@ -11,7 +12,7 @@ class App {
 
     this.middlewares(appInit.middleWares);
     this.routes(appInit.controllers);
-    this.assets();
+    this.asset();
     this.template();
   }
 
@@ -27,13 +28,12 @@ class App {
     })
   }
 
-  private assets() {
-    this.app.use(express.static('public'));
-    this.app.use(express.static('views'));
+  private asset() {
+    this.app.use(express.static(path.join(__dirname, "public")));
   }
 
   private template() {
-    this.app.set('view engine', 'ejs');
+    this.app.set('view engine', 'pug');
   }
 
   public listen() {

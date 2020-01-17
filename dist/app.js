@@ -1,40 +1,40 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = require("express");
-var App = /** @class */ (function () {
-    function App(appInit) {
-        this.app = express();
+const express_1 = __importDefault(require("express"));
+const path_1 = __importDefault(require("path"));
+class App {
+    constructor(appInit) {
+        this.app = express_1.default();
         this.port = appInit.port;
         this.middlewares(appInit.middleWares);
         this.routes(appInit.controllers);
-        this.assets();
+        this.asset();
         this.template();
     }
-    App.prototype.middlewares = function (middleWares) {
-        var _this = this;
-        middleWares.forEach(function (middleWare) {
-            _this.app.use(middleWare);
+    middlewares(middleWares) {
+        middleWares.forEach(middleWare => {
+            this.app.use(middleWare);
         });
-    };
-    App.prototype.routes = function (controllers) {
-        var _this = this;
-        controllers.forEach(function (controller) {
-            _this.app.use(controller);
+    }
+    routes(controllers) {
+        controllers.forEach(controller => {
+            this.app.use('/', controller.router);
         });
-    };
-    App.prototype.assets = function () {
-        this.app.use(express.static('public'));
-        this.app.use(express.static('views'));
-    };
-    App.prototype.template = function () {
+    }
+    asset() {
+        this.app.use(express_1.default.static(path_1.default.join(__dirname, "public")));
+    }
+    template() {
         this.app.set('view engine', 'pug');
-    };
-    App.prototype.listen = function () {
-        this.app.listen(this.port, function () {
-            console.log('App listening on the port ${this.port}');
+    }
+    listen() {
+        this.app.listen(this.port, () => {
+            console.log(`App listening on the port ${this.port}`);
         });
-    };
-    return App;
-}());
+    }
+}
 exports.default = App;
-//# sourceMappingURL=app.js.map
+//# sourceMappingURL=App.js.map
