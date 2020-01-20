@@ -10,14 +10,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const App_1 = __importDefault(require("./App"));
-const bodyParser = __importStar(require("body-parser"));
-const logger_1 = __importDefault(require("./middleware/logger"));
-const home_controller_1 = __importDefault(require("./controllers/home.controller"));
-const app = new App_1.default({
+var App_1 = __importDefault(require("./App"));
+var bodyParser = __importStar(require("body-parser"));
+var logger_1 = __importDefault(require("./middleware/logger"));
+var home_controller_1 = __importDefault(require("./controllers/home.controller"));
+var dbtest_controller_1 = __importDefault(require("./controllers/dbtest.controller"));
+var app = new App_1.default({
     port: 3000,
     controllers: [
         new home_controller_1.default(),
+        new dbtest_controller_1.default(),
     ],
     middleWares: [
         bodyParser.json(),

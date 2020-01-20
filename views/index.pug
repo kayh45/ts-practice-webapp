@@ -4,11 +4,12 @@ html
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title Document
+    title Main
     link(href="/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet")
   body
-    div(id="root")
-      h3 #{ data.hello }
-      span(class="bg-dark text-light p-2") #{ data.name }
-    script(src="/js/common.js")
+    div(id="root" class="p-2")
+      h3 #{ data.hello } #{ data.name }
+      a(href="/dbtest" class="btn btn-primary") move
+    script(src="/js/lib/jquery-3.1.1.min.js")
     script(src="/js/lib/bootstrap.min.js")
+    script(src="/js/common.js")

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title #{ data.title }
+    link(href="/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet")
+  body
+    div(id="root" class="p-2")
+      h3 #{ data.title }
+      div(class="row col-10 mb-2")
+        ul(class="list-group")
+          each val in data.users
+            li(class="list-group-item")= val.name + ' (' + val.email + ')'
+          else
+            li(class="list-group-item") There are no values
+      div(class="card col-5")
+        div(class="card-body")
+          form(action="/dbtest/exe_add" method="post")
+            div(class="form-group row")
+              label(for="name" class="col-2 col-form-label") 이름
+              div(class="col-10")
+                input(name="name" id="name" type="text" class="form-control")
+            div(class="form-group row")
+              label(for="email" class="col-2 col-form-label") 이메일
+              div(class="col-10")
+                input(name="email" id="email" type="email" class="form-control")
+            button(type="submit" class="btn btn-outline-primary my-2") 확인
+      a(href="/user" class="btn btn-primary my-2") move
+    script(src="/js/lib/jquery-3.1.1.min.js")
+    script(src="/js/lib/bootstrap.min.js")
+    script(src="/js/common.js")

@@ -7,23 +7,24 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express = __importStar(require("express"));
-class HomeController {
-    constructor() {
+var express = __importStar(require("express"));
+var HomeController = /** @class */ (function () {
+    function HomeController() {
         this.path = '/user';
         this.router = express.Router();
-        this.index = (req, res) => {
-            let data = {
+        this.index = function (req, res) {
+            var data = {
                 hello: 'Hello World!'
             };
             data.name = 'Hyeon';
-            res.render('index', { data });
+            res.render('index', { data: data });
         };
         this.initRoutes();
     }
-    initRoutes() {
+    HomeController.prototype.initRoutes = function () {
         this.router.get('/user', this.index);
-    }
-}
+    };
+    return HomeController;
+}());
 exports.default = HomeController;
 //# sourceMappingURL=home.controller.js.map
